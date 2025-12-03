@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nathan's kledingzaak | Zakenman stijltest</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Preload lokale foto's (pas paden aan als jouw bestandsnamen anders zijn) -->
+    <link rel="preload" href="IMAGES/assetsphotostrench-coat.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotoswhite-shirt.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotoscharcoal-rollneck.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotoscharcoal-blazer.png.png" as="image" />
+    <link rel="preload" href="images/assetsphotosbrown-crewneck.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotosnavy-trousers.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotosbrown-oxfords.png.png" as="image" />
+    <link rel="preload" href="IMAGES/assetsphotoscognac-riem.png.png" as="image" />
+  </head>
+  <body class="is-gated">
+    <div class="gate" id="access-gate" role="dialog" aria-modal="true">
+      <form class="gate__form" id="access-form" novalidate>
+        <h1>Nathan's kledingzaak</h1>
+        <p class="gate__intro">
+          Dit is een testomgeving voor een profielwerkstuk over onderzoek naar
+          koopgedrag. Stel je voor dat je een drukbezette zakenman bent die een
+          complete garderobe moet samenstellen. Vul je naam in om het
+          experiment te starten.
+        </p>
+        <label class="gate__label" for="user-name">Naam</label>
+        <input
+          id="user-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          placeholder="Bijv. Nathan Peters"
+          required
+          autofocus
+        />
+        <p class="gate__helper">
+          Na het invullen krijg je toegang tot de winkelervaring en worden je
+          keuzes na afloop doorgestuurd naar het onderzoeksteam.
+        </p>
+        <button type="submit">Start de stijltest</button>
+        <p class="gate__error" id="gate-error" role="alert" hidden></p>
+      </form>
+    </div>
+
+    <div class="gated-content" aria-hidden="true">
+      <header class="site-header" data-reveal>
+        <div class="site-header__inner">
+          <a class="branding" href="#hero">
+            <span class="branding__title">Nathan's Boutique</span>
+            <span class="branding__subtitle">Zakenluxe voor het profielwerkstuk</span>
+          </a>
+          <nav class="site-nav" aria-label="Hoofdnavigatie">
+            <a href="#hero">Home</a>
+            <a href="#menswear">Collectie</a>
+            <a href="#sale">Sale</a>
+            <a href="#bundles">Pakketten</a>
+            <button type="button" class="site-nav__checkout" id="nav-checkout">Winkelmand</button>
+          </nav>
+          <div class="header-cart" aria-live="polite">
+            Totaal: <span id="cart-total">€0,00</span>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="page">
+        <section class="hero" id="hero" data-reveal>
+          <div class="hero__inner">
+            <div class="hero__copy">
+              <p class="hero__eyebrow">Profielwerkstuk test — zakenman scenario</p>
+              <h2>Nathan's Boutique</h2>
+              <p>
+                Een serene, luxe omgeving waarin je als drukbezette zakenman
+                kleding selecteert. Klik op de visuals om verhalen en prijzen te
+                ontdekken, voeg favoriete items toe aan de winkelmand en rond af
+                via het aparte afrekenscherm.
+              </p>
+              <div class="hero__cta-row">
+                <button type="button" class="cta" id="hero-checkout">Ga naar afrekenen</button>
+                <button type="button" class="link-button" id="hero-scroll">Ontdek de collectie</button>
+              </div>
+              <ul class="hero__details">
+                <li>Inzichten geïnspireerd op Hermès &amp; Loro Piana</li>
+                <li>Scroll om de collectie, sale en pakketten te verkennen</li>
+                <li>Verbergde prijzen tot het moment van interactie</li>
+              </ul>
+            </div>
+            <div class="hero__visual" role="presentation">
+              <div class="hero__frame">
+                <!-- local hero image -->
+                <img id="hero-image" src="IMAGES/assetsphotostrench-coat.png.png" alt="Camel trenchcoat" />
+              </div>
+              <div class="hero__visual-caption">Curated lookbook. Scroll voor meer.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--lookbook" id="lookbook" aria-labelledby="lookbook-title" data-reveal>
+          <div class="section__header">
+            <p class="section__eyebrow">Lookbook</p>
+            <h2 id="lookbook-title">Zachte introductie tot de collectie</h2>
+            <p>Klik op een foto om de volledige beschrijving en prijs te openen.</p>
+          </div>
+          <div class="lookbook__grid" id="lookbook-grid"></div>
+        </section>
+
+        <section class="section" id="menswear" aria-labelledby="menswear-title" data-reveal>
+          <div class="section__header">
+            <p class="section__eyebrow">Collectie</p>
+            <h2 id="menswear-title">Herencollectie</h2>
+            <p>
+              Elke kaart toont enkel de naam en het beeld. Open de kaart voor
+              textuur, verhaal, prijs en om toe te voegen aan het winkelmandje.
+            </p>
+          </div>
+          <div class="product-grid" id="product-grid"></div>
+        </section>
+
+        <section class="section section--accent" id="sale" aria-labelledby="sale-title" data-reveal>
+          <div class="section__header">
+            <p class="section__eyebrow">Sale &amp; research deals</p>
+            <h2 id="sale-title">Stimuleer koopgedrag met incentives</h2>
+            <p>Van tweede gratis tot tijdelijke procentuele kortingen.</p>
+          </div>
+          <div class="sale-grid" id="sale-grid"></div>
+        </section>
+
+        <section class="section" id="bundles" aria-labelledby="bundle-title" data-reveal>
+          <div class="section__header">
+            <p class="section__eyebrow">Pakketten</p>
+            <h2 id="bundle-title">Samenstellingen om te testen</h2>
+            <p>
+              Elk pakket bevat meerdere stukken. Bekijk de inhoud en prijs in het
+              detailvenster en voeg toe voor een compleet scenario.
+            </p>
+          </div>
+          <div class="bundle-grid" id="bundle-grid"></div>
+        </section>
+
+        <section class="section section--insights" aria-labelledby="insights-title" data-reveal>
+          <div class="section__header">
+            <p class="section__eyebrow">Onderzoeksnotities</p>
+            <h2 id="insights-title">Live inzichten voor het profielwerkstuk</h2>
+            <p>
+              Bekijk wat er in het mandje zit en welke opties uiteindelijk
+              verlaten zijn. Alles wordt meegestuurd met de Formspree-rapportage.
+            </p>
+          </div>
+          <div class="insight-panels">
+            <article class="insight-panel">
+              <h3>Winkelmand</h3>
+              <ul id="cart-insight"></ul>
+            </article>
+            <article class="insight-panel">
+              <h3>Verlaten keuzes</h3>
+              <ul id="abandoned-insight"></ul>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <section class="checkout" id="checkout" aria-labelledby="checkout-title" hidden>
+        <div class="checkout__inner">
+          <button type="button" class="checkout__back" id="checkout-back">Terug naar winkel</button>
+          <h2 id="checkout-title">Afrekenen</h2>
+          <p class="checkout__lead">
+            Controleer je winkelmand voordat je de gegevens verstuurt naar het
+            profielwerkstuk-team.
+          </p>
+          <div class="checkout__summary">
+            <div class="checkout__cart">
+              <h3>Je selectie</h3>
+              <ul id="checkout-list"></ul>
+              <p class="checkout__empty" id="checkout-empty">Je winkelmand is nog leeg.</p>
+            </div>
+            <aside class="checkout__totals">
+              <dl>
+                <div>
+                  <dt>Subtotaal</dt>
+                  <dd id="checkout-subtotal">€0,00</dd>
+                </div>
+                <div>
+                  <dt>Kortingen</dt>
+                  <dd id="checkout-savings">-€0,00</dd>
+                </div>
+                <div class="checkout__total-row">
+                  <dt>Totaal</dt>
+                  <dd id="checkout-total">€0,00</dd>
+                </div>
+              </dl>
+              <button type="button" class="cta" id="checkout-submit">Verstuur naar Formspree</button>
+              <p class="checkout__legal">
+                Met de knop hierboven ga je akkoord met het verzenden van je
+                keuzes naar <strong>https://formspree.io/f/movyaoor</strong> voor
+                onderzoeksdoeleinden.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal" id="product-modal" role="dialog" aria-modal="true" hidden>
+      <div class="modal__overlay" id="modal-overlay"></div>
+      <div class="modal__content" role="document">
+        <button type="button" class="modal__close" id="modal-close" aria-label="Sluit"></button>
+        <div class="modal__image"><img id="modal-image" alt="" /></div>
+        <div class="modal__body">
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <p class="modal__price" id="modal-price"></p>
+          <div class="modal__actions">
+            <label>
+              Aantal
+              <input type="number" id="modal-quantity" min="1" value="1" />
+            </label>
+            <button type="button" class="cta" id="modal-add">Voeg toe aan winkelmand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <!-- Verborgen lokale fallbacks; verwijder of pas aan als je andere bestanden hebt -->
+    <div aria-hidden="true" style="display:none">
+      <img src="IMAGES/assetsphotostrench-coat.png.png" alt="" />
+      <img src="IMAGES/assetsphotoswhite-shirt.png.png" alt="" />
+      <img src="IMAGES/assetsphotoscharcoal-rollneck.png.png" alt="" />
+      <img src="IMAGES/assetsphotoscharcoal-blazer.png.png" alt="" />
+      <img src="images/assetsphotosbrown-crewneck.png.png" alt="" />
+      <img src="IMAGES/assetsphotosnavy-trousers.png.png" alt="" />
+      <img src="IMAGES/assetsphotosbrown-oxfords.png.png" alt="" />
+      <img src="IMAGES/assetsphotoscognac-riem.png.png" alt="" />
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
